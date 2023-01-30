@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+	@media screen and (max-width: 520px) {
+	#mapBanner{
+		background-image: url("{% static 'images/banners/mapSmallBanner.jpg' %}");
+	}
+	#qrBanner{
+		background-image: url("{% static 'images/banners/qrSmallBanner.jpg' %}");
+	}
+}
+
+@media screen and (min-width: 521px) {
+	#mapBanner{
+		background-image: url("{% static 'images/banners/mapBanner1.png' %}");
+	}
+	#qrBanner{
+		background-image: url("{% static 'images/banners/qr.jpg' %}")
+	}
+}
+</style>
+<div class="bannerCover">
+	<div class="banner">
+		<div class="bannerContent" id="banner1"><img class="bannerPh" src="{% static 'images/banners/banner1.jpg' %}"></div>
+		<a href="#mailTag"><div class="bannerContent" id="banner2"><img class="bannerPh" src="{% static 'images/banners/banner2.png' %}"></div></a>
+		<a href="map.html"><div class="bannerContent" id="banner3"><img class="bannerPh" src="{% static 'images/banners/banner3.png' %}"></div></a>
+		<a href="qr.html"><div class="bannerContent" id="banner4"><img class="bannerPh" src="{% static 'images/banners/banner4.png' %}"></div></a>
+	</div>
+	</div>
+	<div class="content">
+		<p class="title">Последние статьи</p>
+		{% if latestArticles %}
+		{% for article in latestArticles %}
+		 <a href="{% url 'detailArticle' article.pk %}"><div class="articleBox">
+		 	<div class="shortPhoto" style="background-image: url('{{ article.images.all.0.image.url }}');"></div>
+		 	<div class="shortArticleBox">
+		 		<p class="smallTitle">{{ article.title }}</p>
+		 		<div class="articleUser">
+		 			<img src="{{ article.author.photo.url }}">
+		 			<p>{{ article.author.fullName }}</p>
+		 		</div>
+		 		<p class="shortDescription">{{ article.description }}</p>
+		 	</div>
+		 	<div class="shortSocialBox">
+		 		<img class="socialIcon" src="{% static 'images/icons/heart.png' %}">
+		 		<p class="socialCount">{{ article.likes }}</p>
+		 		<p class="shortDate">{{ article.date }}</p>
+		 	</div>
+		 </div></a>
+		{% endfor %}
+		{% else %}
+			<p>Статей нет</p>
+		{% endif %}
+	</div>
+	<a href="{% url 'map' %}"><div class="mapBox" id="mapBanner" style=""></div></a>
+	<a href="{% url 'qr' %}"><div class="mapBox" id="qrBanner" style="margin-top: 0px;"></div></a>
+	<div class="mailBox" name="mailTag">
+		<div class="mail">
+			<h3>Подпишись на нашу рассылку 📩</h3>
+			<p>Никакого спама, только интересные факты и чистая история!</p>
+			<div class="mailInput">
+				<input type="text" placeholder="historylover@mail.com">
+				<div class="mailDone"><img src="{% static 'images/icons/arrow-right.png' %}"></div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

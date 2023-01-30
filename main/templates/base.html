@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    {% load static %}
+<head>
+	<title>История ИТМО | histribution</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id="headBack"></div>
+	<header>
+		<img id="menuButton" src="{% static 'images/icons/menu.png' %}">
+		<a href="{% url 'home' %}"><img src="{% static 'images/logos/logo1.png' %}" class="logo"></a>
+		<div class="menu">
+			<div class="search"><img src="{% static 'images/icons/search.png' %}"><input type="text" placeholder="Поиск по статьям..."></div>
+			<a href = "{% url 'home' %}">Главная</a>
+			<a href = "all.html">Все статьи</a>
+			<a href = "{% url 'map' %}">Карта</a>
+			<a href = "{% url 'qr' %}">QR</a>
+			<a href = "faq.html">Частые вопросы</a>
+		</div>
+	</header>
+
+	<div id="bigMenu">
+		<div class="search"><img src="{% static 'images/icons/search.png' %}"><input type="text" placeholder="Поиск по статьям..."></div>
+		<a href="{% url 'home' %}"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/home.png' %}"><p>Главная</p></div></a>
+		<a href="{% url 'map' %}"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/map.png' %}"><p>Карта</p></div></a>
+		<a href="all.html"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/articles.png' %}"><p>Все статьи</p></div></a>
+		<a href="{% url 'qr' %}"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/qr.png' %}"><p>QR</p></div></a>
+		<a href="faq.html"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/faq.png' %}"><p>Частые вопросы</p></div></a>
+	</div>
+	<script>
+		const bigMenu = document.getElementById("bigMenu");
+		const headBack = document.getElementById("headBack");
+		const menuButton = document.getElementById("menuButton");
+		let isVisible = false;
+
+		document.getElementById("menuButton").onclick = function() {
+  	if(isVisible){
+  		headBack.style.height = "70px";
+  		bigMenu.style.opacity = "0";
+  		bigMenu.style.visibility = "hidden"
+  		menuButton.src="{% static 'images/icons/menu.png' %}";
+  	} else {
+  		headBack.style.height = "110vh";
+  		bigMenu.style.opacity = "1";
+  		bigMenu.style.visibility = "visible"
+  		menuButton.src="{% static 'images/icons/close.png' %}";
+  	}
+  	isVisible = !isVisible
+
+		}
+  </script>
+  	{% block content %}
+	{% endblock content %}
+	<footer>
+		<p>Вёрстка и дизайн - Башаримов Евгений, back-end - Булко Егор, редакция - Ильинский Иван</p>
+		<p>Университет ИТМО, 2022</p>
+	</footer>
+</body>
