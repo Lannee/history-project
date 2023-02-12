@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<img id="histLogo" src="{% static 'images/icons/hist(b).png' %}">
+<p class="title">Все статьи</p>
+<div class="content" id="allContent">
+{% for article in articles %}
+	<a href="{% url 'detailArticle' article.pk %}"><div class="articleBox">
+		<div class="shortPhoto" style="background-image: url('{{ article.images.all.0.image.url }}');"></div>
+		<div class="shortArticleBox">
+			<p class="smallTitle">{{ article.title }}</p>
+			<div class="articleUser">
+				<img src="{{ article.author.photo.url }}">
+				<p>{{ article.author.fullName }}</p>
+			</div>
+			<p class="shortDescription">{{ article.description }}</p>
+		</div>
+		<div class="shortSocialBox">
+			<img class="socialIcon" src="{% static 'images/icons/heart.png' %}">
+			<p class="socialCount">{{ article.likes }}</p>
+			<p class="shortDate">{{ article.date }}</p>
+		</div>
+		</div></a>
+{% endfor %}		
+</div>
+{% endblock content %}

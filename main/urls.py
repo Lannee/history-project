@@ -8,6 +8,8 @@ urlpatterns = [
     path('article/<int:articleId>', views.detailArticle, name="detailArticle"),
     path('map', views.mapPage, name="map"),
     path('qr', views.qrPage, name="qr"),
+    path('all', views.allPage, name="all"),
+    path('search', views.searchPage, name="searchResults")
 ]
 
 if settings.DEBUG:

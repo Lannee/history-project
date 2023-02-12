@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load index %}
 {% block content %}
 <style>
 	@media screen and (min-width: 750px) {
@@ -67,10 +68,26 @@
 </div>
 {% endif %}
 <div class="fullContent">
-	<p>{{ article.text }}</p>
+	{% for paragraph in paragraphs %}
+		{% if imagesInParagraphs|length == 0 %}
+			<p>{{ paragraph }}</p>
+		{% else %}
+			{% if forloop.last %}
+				<p>{{ paragraph }}</p>
+			{% else %}
+				{% with imagesInParagraphs|index:forloop.counter0 as indexImage %}
+				<p>{{ paragraph }}</p>
+				<img class="inArticleImg" src="{{ indexImage.image.url }}">
+				{% endwith %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+	{% for image in footerImages %}
+		<img class="inArticleImg" src="{{ image.image.url }}">
+	{% endfor %}
 </div>
 
-<div id="commentsBox" onclick="setLike()">
+<!-- <div id="commentsBox" onclick="setLike()">
 	<img class="socialIcon" id="likeImg" src="{% static 'images/icons/heart.png' %}">
 	<p class="socialCount" id="likes">{{ article.likes }}</p>
 </div>
@@ -95,5 +112,5 @@
 		isLiked = !isLiked;	
 	}
 
-</script>
+</script> -->
 {% endblock content %}

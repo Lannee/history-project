@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<img id="histLogo" src="{% static 'images/icons/hist(b).png' %}">
+<p class="title">Результаты поиска по вашему запросу: {{ query }}</p>
+{% if articles|length == 0 %}
+	<div class="content" style="min-height: 100vh;">
+		<div style="width: 100%; float: left;">
+		<p class="title" style="margin-top: 80px; float: left; margin-bottom: 0px;">Нет результатов</p> <img src="{% static 'images/icons/attention.jpg' %}" style="float: left;height: 32px;margin-top: 85px;margin-left: 14px;border-radius: 20px;">
+	</div>
+		<p style="font-family: 'Montserrat', sans-serif;font-size: 18px;margin-left: 40px;margin-top: 10px;float: left;">Попробуйте изменить запрос</p>
+	</div>
+{% else %}
+{% for article in articles %}
+	<a href="{% url 'detailArticle' article.pk %}"><div class="articleBox">
+		<div class="shortPhoto" style="background-image: url('{{ article.images.all.0.image.url }}');"></div>
+		<div class="shortArticleBox">
+			<p class="smallTitle">{{ article.title }}</p>
+			<div class="articleUser">
+				<img src="{{ article.author.photo.url }}">
+				<p>{{ article.author.fullName }}</p>
+			</div>
+			<p class="shortDescription">{{ article.description }}</p>
+		</div>
+		<div class="shortSocialBox">
+			<!-- <img class="socialIcon" src="{% static 'images/icons/heart.png' %}">
+			<p class="socialCount">{{ article.likes }}</p> -->
+			<p class="shortDate">{{ article.date }}</p>
+		</div>
+		</div></a>
+{% endfor %}
+{% endif %}
+{% endblock content %}

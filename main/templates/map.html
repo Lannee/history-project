@@ -3,11 +3,11 @@
 {% block content %}
 <div class="map" style="background-image: url({% static 'images/fullMap1.jpg' %});">
 	<a href="{% url 'detailArticle' 3 %}"><div class="point" id="kronv"><p>Кронверкский пр-т, 49</p></div></a>
-	<a href="./campusPages/lomo.html"><div class="point" id="lomo"><p>ул. Ломоносова, 9</p></div></a>
-	<a href="./campusPages/bir.html"><div class="point" id="bir"><p>Биржевая линия, 16</p></div></a>
-	<a href="./campusPages/chay.html"><div class="point" id="chay"><p>улица Чайковского, д. 11/2</p></div></a>
-	<a href="./campusPages/griv.html"><div class="point" id="griv"><p>переулок Гривцова, д. 14</p></div></a>
-	<a href="./campusPages/cronv.html"><div class="slideIcon"><img src="{% static 'images/icons/slide.png' %}"></div></a>
+	<a href="{% url 'detailArticle' 4 %}"><div class="point" id="lomo"><p>ул. Ломоносова, 9</p></div></a>
+	<a href="{% url 'detailArticle' 5 %}"><div class="point" id="bir"><p>Биржевая линия, 16</p></div></a>
+	<a href="{% url 'detailArticle' 7 %}"><div class="point" id="chay"><p>улица Чайковского, д. 11/2</p></div></a>
+	<a href="{% url 'detailArticle' 6 %}"><div class="point" id="griv"><p>переулок Гривцова, д. 14</p></div></a>
+	<a href="{% url 'detailArticle' 3 %}"><div class="slideIcon"><img src="{% static 'images/icons/slide.png' %}"></div></a>
 </div>
 </div>
 <div class="adressRow">
@@ -18,28 +18,28 @@
 			<p class="fullAdressB">Читать подробнее</p>
 		</div>
 	</div></a>
-	<a href="./campusPages/lomo.html"><div class="adressBox">
+	<a href="{% url 'detailArticle' 4 %}"><div class="adressBox">
 		<img src="{% static 'images/campuses/2.png' %}" class="adressPh">
 		<div class="adressInfo">
 			<p class="fullAdress">ул. Ломоносова, 9</p>
 			<p class="fullAdressB">Читать подробнее</p>
 		</div>
 	</div></a>
-	<a href="./campusPages/chay.html"><div class="adressBox">
+	<a href="{% url 'detailArticle' 7 %}"><div class="adressBox">
 		<img src="{% static 'images/campuses/3.png' %}" class="adressPh">
 		<div class="adressInfo">
 			<p class="fullAdress">ул. Чайковского, д. 11/2</p>
 			<p class="fullAdressB">Читать подробнее</p>
 		</div>
 	</div></a>
-	<a href="./campusPages/griv.html"><div class="adressBox">
+	<a href="{% url 'detailArticle' 6 %}"><div class="adressBox">
 		<img src="{% static 'images/campuses/4.png' %}" class="adressPh">
 		<div class="adressInfo">
 			<p class="fullAdress">пер. Гривцова, д. 14</p>
 			<p class="fullAdressB">Читать подробнее</p>
 		</div>
 	</div></a>
-	<a href="./campusPages/bir.html"><div class="adressBox">
+	<a href="{% url 'detailArticle' 5 %}"><div class="adressBox">
 		<img src="{% static 'images/campuses/5.png' %}" class="adressPh">
 		<div class="adressInfo">
 			<p class="fullAdress">Биржевая линия, д. 14</p>

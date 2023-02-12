@@ -28,4 +28,10 @@ class Author(models.Model):
     photo = models.ImageField(upload_to='authors')
 
     def __str__(self):
-        return self.fullName        
+        return self.fullName   
+
+class EmailHistribution(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email.__str__() 

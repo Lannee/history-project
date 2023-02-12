@@ -43,8 +43,8 @@
 		 		<p class="shortDescription">{{ article.description }}</p>
 		 	</div>
 		 	<div class="shortSocialBox">
-		 		<img class="socialIcon" src="{% static 'images/icons/heart.png' %}">
-		 		<p class="socialCount">{{ article.likes }}</p>
+		 		<!-- <img class="socialIcon" src="{% static 'images/icons/heart.png' %}">
+		 		<p class="socialCount">{{ article.likes }}</p> -->
 		 		<p class="shortDate">{{ article.date }}</p>
 		 	</div>
 		 </div></a>
@@ -59,10 +59,16 @@
 		<div class="mail">
 			<h3>Подпишись на нашу рассылку 📩</h3>
 			<p>Никакого спама, только интересные факты и чистая история!</p>
-			<div class="mailInput">
+			<form method="post" class="mailInput">
+				{% csrf_token %}
+				{{ form.email }}
+				<!-- <input type="email" placeholder="historylover@mail.com"> -->
+				<button type="submit"><div class="mailDone"><img src="{% static 'images/icons/arrow-right.png' %}"></div></button>
+			</form>
+			<!-- <div class="mailInput">
 				<input type="text" placeholder="historylover@mail.com">
 				<div class="mailDone"><img src="{% static 'images/icons/arrow-right.png' %}"></div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 {% endblock content %}

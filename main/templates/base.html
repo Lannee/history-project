@@ -17,12 +17,16 @@
 		<img id="menuButton" src="{% static 'images/icons/menu.png' %}">
 		<a href="{% url 'home' %}"><img src="{% static 'images/logos/logo1.png' %}" class="logo"></a>
 		<div class="menu">
-			<div class="search"><img src="{% static 'images/icons/search.png' %}"><input type="text" placeholder="Поиск по статьям..."></div>
+			<div class="search"><img src="{% static 'images/icons/search.png' %}">
+				<form action="{% url 'searchResults' %}" method="get">
+					<input name="q" type="text" placeholder="Поиск по статьям...">
+				</form>
+			</div>
 			<a href = "{% url 'home' %}">Главная</a>
-			<a href = "all.html">Все статьи</a>
+			<a href = "{% url 'all' %}">Все статьи</a>
 			<a href = "{% url 'map' %}">Карта</a>
 			<a href = "{% url 'qr' %}">QR</a>
-			<a href = "faq.html">Частые вопросы</a>
+			<!-- <a href = "#">Частые вопросы</a> -->
 		</div>
 	</header>
 
@@ -30,9 +34,9 @@
 		<div class="search"><img src="{% static 'images/icons/search.png' %}"><input type="text" placeholder="Поиск по статьям..."></div>
 		<a href="{% url 'home' %}"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/home.png' %}"><p>Главная</p></div></a>
 		<a href="{% url 'map' %}"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/map.png' %}"><p>Карта</p></div></a>
-		<a href="all.html"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/articles.png' %}"><p>Все статьи</p></div></a>
+		<a href="{% url 'all' %}"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/articles.png' %}"><p>Все статьи</p></div></a>
 		<a href="{% url 'qr' %}"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/qr.png' %}"><p>QR</p></div></a>
-		<a href="faq.html"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/faq.png' %}"><p>Частые вопросы</p></div></a>
+		<!-- <a href="#"><div class="bigMenuButton"><img class="menuIconA" src="{% static 'images/icons/faq.png' %}"><p>Частые вопросы</p></div></a> -->
 	</div>
 	<script>
 		const bigMenu = document.getElementById("bigMenu");
